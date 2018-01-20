@@ -1,0 +1,57 @@
+from django import models
+from django.utils import timezone
+#create your models here
+    class post(models.Model):
+        author=models.foreignKey('auth.User',on_delete=models.CASCADE)
+        title=models.CharField(max_length=200)
+        text=models.TextField()
+        created_data=models.dateTimeField(default=timezone.now)
+        
+-----------------------------------------------------------------------------------------------------------
+from django.contrib import admin
+from.models import Post
+
+#register your model here
+    admin.site.register(Post)
+------------------------------------------------------------------------------------------------------------
+from django.config.urls import url
+from django.contrib import admin
+	urlpattern=[
+		url(r'^admin/' , admin.site.urls),
+		url(r'',include*'blog.urls'))]
+------------------------------------------------------------------------------------------------------------
+from django.config.urls import url
+from.import views
+	urlpatterns=[
+	url(r'^hello/$',views,hello,name="")]
+------------------------------------------------------------------------------------------------------------
+<html>
+<head>
+Rit-Blog
+</head>
+<body>
+<h1>hello!</h1>
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------
+from django.shortcuts import render
+#Create your views here.
+def hello(request):
+	return render(request,"hello.html",{})
+--------------------------------------------------------------------------------------------------------------	
+from django.shortcuts import render
+from .models import post
+#Create your views here.
+#saying hello
+def hello(request):
+	return render(request,"hello.html",{})
+def posts(request)
+	posts=post.objects.order_by('-created_data')
+	return render(request,"post.html",{'posts'}:posts)
+---------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
